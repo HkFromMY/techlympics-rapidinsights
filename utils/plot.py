@@ -13,6 +13,4 @@ def plot_forecast(actual, forecast):
     plt.ylabel("Ridership")
     plt.xlabel("Date")
 
-    forecast.to_csv("forecast.csv", index=False)
-
     return ax

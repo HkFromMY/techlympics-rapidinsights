@@ -1,6 +1,6 @@
 import streamlit as st
 
 def subscribe_to_anomaly():
-    pass
+    st.title("Subscribe to the Anomaly Alerting")
 
 subscribe_to_anomaly()
