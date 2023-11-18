@@ -85,10 +85,10 @@ class RFModel(Model):
 def create_xgboost_model():
     pass
 
-def create_rf_model():
+def create_rf_model(name):
     """
         Returns a RFModel object
     """
-    rfmodel = RFModel("Random Forest", n_estimators=300, random_state=42)
+    rfmodel = RFModel(name, n_estimators=300, random_state=42)
 
     return rfmodel

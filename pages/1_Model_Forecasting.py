@@ -23,7 +23,7 @@ def load_model(training_lrt_kj, _dp, holiday_df):
     y = training_lrt_kj['rail_lrt_kj']
 
     ### Fitting
-    rf_model = create_rf_model()
+    rf_model = create_rf_model("Random Forest for LRT")
     rf_model.fit(X, y)
 
     return rf_model
