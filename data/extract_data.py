@@ -90,7 +90,7 @@ def time_series_generator(date_index):
 
     return dp
 
-def extract_data(start_date='2022-01-01', end_date='2022-09-30', field='rail_lrt_kj'):
+def extract_data(start_date='2022-01-01', end_date='2022-09-30', field='rail_lrt_kj', train=False):
     """
         Extract and prepare the data for LRT Kelana Jaya line from the CSV files provided
         Needs start and end date to determine which data (in terms of date range) to extract
@@ -101,6 +101,7 @@ def extract_data(start_date='2022-01-01', end_date='2022-09-30', field='rail_lrt
     df = df[['date', field]].copy(deep=True)
     df = df.loc[(df['date'] >= start_date) & (df['date'] <= end_date)]
     df = df.set_index('date').to_period('D')
-    df = df.loc[~(('2022-11-09' <= df.index) & (df.index <= '2022-11-15'))]
+    if train and field == 'rail_lrt_kj':
+        df = df.loc[~(('2022-11-09' <= df.index) & (df.index <= '2022-11-15'))]
 
     return df

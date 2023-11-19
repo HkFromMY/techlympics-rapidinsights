@@ -11,7 +11,7 @@ from utils.constant import CURRENT_DIR
 @st.cache_data
 def load_data(field):
     ### Obtained all raw data
-    data = extract_data('2022-01-01', '2022-09-30', field)
+    data = extract_data('2022-01-01', '2022-09-30', field, True)
     dp = time_series_generator(data.index)
     holiday_df = generate_holidays('2022-01-01', '2023-12-31')
 
