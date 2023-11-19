@@ -65,7 +65,7 @@ def initialize_models():
 
     return models, data, dps, fields
 
-def generate_anomalies_table(model, dp, holiday_df, y_test):
+def generate_anomalies_table(model, dp, holiday_df, y_test, sensitivity):
     X_test = dp.out_of_sample(steps=92)
     X_test = X_test.join(holiday_df)
 
@@ -81,9 +81,19 @@ def generate_anomalies_table(model, dp, holiday_df, y_test):
     anomaly_table['forecasted_lower'] = anomaly_table['forecasted'] * 0.9
 
     def flag_anomaly(row):
-        if (row['actual'] < (row['forecasted_lower'] * 0.9)) or (row['actual'] > (row['forecasted_upper'] * 1.1)):
-            return 1
-        
+
+        if sensitivity == 'high':
+            if (row['actual'] < (row['forecasted_lower'] * 0.95)) or (row['actual'] > (row['forecasted_upper'] * 1.05)):
+                return 1
+            
+        elif sensitivity == 'medium':
+            if (row['actual'] < (row['forecasted_lower'] * 0.9)) or (row['actual'] > (row['forecasted_upper'] * 1.1)):
+                return 1
+            
+        elif sensitivity == 'low':
+            if (row['actual'] < (row['forecasted_lower'] * 0.85)) or (row['actual'] > (row['forecasted_upper'] * 1.15)):
+                return 1
+            
         return 0
     
     anomaly_table['is_anomaly'] = anomaly_table.apply(flag_anomaly, axis=1)
@@ -109,10 +119,19 @@ def subscribe_to_anomaly():
 
     models, data, dps, fields = initialize_models()
     holiday_df = generate_holidays('2022-01-01', '2023-12-31')
-    model_opt = st.selectbox(
-        "Please select one of the models",
-        models.keys()
-    )
+
+    col1, col2 = st.columns(2, gap='medium')
+    with col1:
+        model_opt = st.selectbox(
+            "Please select one of the models",
+            models.keys()
+        )
+
+    with col2:
+        sensitivity_opt = st.selectbox(
+            "Please select the sensitivity of the model",
+            ("High", "Medium", "Low")
+        )
 
     ### Tables of anomalies flagged
     selected_model = models[model_opt]
@@ -120,7 +139,7 @@ def subscribe_to_anomaly():
     selected_field = fields[model_opt]
 
     y_test = extract_data('2022-10-01', '2022-12-31', selected_field).iloc[:, 0]
-    generate_anomalies_table(selected_model, selected_dp, holiday_df, y_test)
+    generate_anomalies_table(selected_model, selected_dp, holiday_df, y_test, sensitivity_opt.lower())
 
     ### Template of the email sent
     st.divider()
