@@ -5,6 +5,7 @@ import streamlit as st
 from model.forecast import create_rf_model
 from data.extract_data import extract_data, time_series_generator, generate_holidays
 from utils.plot import plot_forecast
+from streamlit_extras.app_logo import add_logo
 
 @st.cache_data
 def load_data(field):
@@ -52,6 +53,18 @@ def forecast_page():
     """
         Forecasting model's page
     """
+
+    ###Titles and User Guide
+    add_logo('C:\\Users\\bpvpe\Desktop\\techlympics-rapidinsights\\asset\\logo.png')
+    st.title(":chart_with_upwards_trend: Forecast Ridership")
+    st.info(
+        """How to use:\n
+        1. Determine your train / bus line of choice
+        2. Determine a duration you would like to forecast
+        3. Await for your results!
+        """
+    )
+
     ### Initializations
     training_lrt_kj, dp_kj, holiday_df = load_data('rail_lrt_kj')
     training_rapidkl, dp_bus, _ = load_data('bus_rkl')

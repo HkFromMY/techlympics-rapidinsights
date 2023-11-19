@@ -3,6 +3,7 @@ import streamlit as st
 ### Custom functions 
 from data.extract_data import extract_data, time_series_generator, generate_holidays
 from model.forecast import create_rf_model
+from streamlit_extras.app_logo import add_logo
 
 @st.cache_data
 def load_data(field):
@@ -57,6 +58,7 @@ def initialize_models():
     return models, data, dps
 
 def subscribe_to_anomaly():
-    st.title("Subscribe to the Anomaly Alerting")
+    add_logo('C:\\Users\\wyeye\\Downloads\\techlympics-rapidinsights\\asset\\logo.png')
+    st.title(":mag: Anomaly Alert")
 
 subscribe_to_anomaly()

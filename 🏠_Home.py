@@ -1,10 +1,12 @@
 import streamlit as st
+from streamlit_extras.app_logo import add_logo
 
 def landing_page():
     """
         Landing Page
     """
-    st.title("Introducing to You: RapidInsights")
+    add_logo('C:\\Users\\wyeye\\Downloads\\techlympics-rapidinsights\\asset\\logo.png')
+    st.title("Your gateway to rapid transportation insights")
     col1, col2= st.columns(2, gap='large')
     with col1:
         with st.container():
@@ -24,6 +26,8 @@ def landing_page():
             st.header(":mag:")
             st.markdown("<h3 style='height:48px;'>Anomaly Detection</h3>", unsafe_allow_html=True)
             st.markdown("It allows you to subscribe to our services that enables daily alerting whenever there's an anomaly in the data on a daily basis.")
+
+    st.divider()
 
     st.title("Why use this product?")
     col4, col5 = st.columns(2, gap='large')
