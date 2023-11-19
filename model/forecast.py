@@ -70,6 +70,9 @@ class Model:
             
     def get_model(self):
         return self.model
+    
+    def get_name(self):
+        return self.name
             
 class XGBModel(Model):
     def __init__(self, name, **kwargs):

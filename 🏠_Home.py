@@ -46,5 +46,4 @@ def landing_page():
             st.markdown("<h3 style='height:84px;'>Optimizing Bus Schedules</h3>", unsafe_allow_html=True)
             st.markdown("It helps the Prasarana Team to optimize the bus and train schedules by accomodating to the demand, thus improving rider wait times and reducing the traffic congestions during peak hours.")
     
-
 landing_page()
