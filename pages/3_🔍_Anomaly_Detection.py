@@ -4,6 +4,7 @@ import streamlit as st
 from data.extract_data import extract_data, time_series_generator, generate_holidays
 from model.forecast import create_rf_model
 from streamlit_extras.app_logo import add_logo
+from utils.constant import CURRENT_DIR
 
 @st.cache_data
 def load_data(field):
@@ -58,7 +59,7 @@ def initialize_models():
     return models, data, dps
 
 def subscribe_to_anomaly():
-    add_logo('C:\\Users\\wyeye\\Downloads\\techlympics-rapidinsights\\asset\\logo.png')
+    add_logo(f'{CURRENT_DIR}\\asset\\logo.png')
     st.title(":mag: Anomaly Alert")
 
 subscribe_to_anomaly()

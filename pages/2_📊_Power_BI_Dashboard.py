@@ -1,8 +1,9 @@
 import streamlit as st
 from streamlit_extras.app_logo import add_logo
+from utils.constant import CURRENT_DIR
 
 def dashboard_page():
-    add_logo('C:\\Users\\wyeye\\Downloads\\techlympics-rapidinsights\\asset\\logo.png')
+    add_logo(f'{CURRENT_DIR}\\asset\\logo.png')
     st.title(":bar_chart: Power BI Interactive Dashboard")
     st.text("""For better experience, kindly adjust dashboard view via the Zoom function present 
 below""")

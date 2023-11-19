@@ -1,11 +1,12 @@
 import streamlit as st
 from streamlit_extras.app_logo import add_logo
+from utils.constant import CURRENT_DIR
 
 def landing_page():
     """
         Landing Page
     """
-    add_logo('C:\\Users\\wyeye\\Downloads\\techlympics-rapidinsights\\asset\\logo.png')
+    add_logo(f'{CURRENT_DIR}\\asset\\logo.png')
     st.title("Your gateway to rapid transportation insights")
     col1, col2= st.columns(2, gap='large')
     with col1:
