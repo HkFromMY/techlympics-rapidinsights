@@ -5,6 +5,7 @@ import streamlit as st
 from model.forecast import create_rf_model
 from data.extract_data import extract_data, time_series_generator, generate_holidays
 from utils.plot import plot_forecast
+from streamlit_extras.app_logo import add_logo
 
 @st.cache_data
 def load_data():
@@ -36,6 +37,14 @@ def forecast_page():
     training_lrt_kj, dp, holiday_df = load_data()
     rf_model = load_model(training_lrt_kj, dp, holiday_df)
 
+    ###Titles and User Guide
+    add_logo('C:\\Users\\wyeye\\Downloads\\techlympics-rapidinsights\\asset\\logo.png')
+    st.title(":chart_with_upwards_trend: Forecast Ridership")
+    st.info("""How to use:\n
+    1. Determine your train / bus line of choice
+    2. Determine a duration you would like to forecast
+    3. Await for your results!
+    """)
     ### Front-end for Forecasting Model
     st.write("Enter how many days you want to forecast below (Starting from 2023-01-01):")
     forecast_length = st.slider('Forecast Length', 0, 365, 14)
