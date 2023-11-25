@@ -5,13 +5,20 @@
 2. Power BI
 3. Python Scikit-learn (for modelling)
 
+### Dependencies (for Python):
+1. `pip install xgboost`
+2. `pip install streamlit`
+3. `pip install sklearn`
+4. `pip install numpy`
+5. `pip install pandas`
+
 ### Slide Resources
 Link to [Presentation Slides](https://www.canva.com/design/DAF1JT2WQcE/3sP20E03ApkSChl3OdkAhg/edit?utm_content=DAF1JT2WQcE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ### Problem Statement
 Each Malaysian spends 59.8 minutes on average in commuting with public transport (including LRT, MRT, and buses) which is time-consuming. This is because of the inefficient public transport system which the headway frequency for buses is around half an hour that can be affected by the punctuality as well. Not only that, old rails such as LRT are also prone to breakdown issues which can affect up to 16 stations. Hence, this has caused public transport to be a less preferred choice among Malaysians the schedule cannot be estimated accurately which can cause inconvenience to the commuters.  
 
-![image](https://github.com/HkFromMY/techlympics-rapidinsights/assets/48499555/db6cf6b9-0b90-4777-a62c-72ca43fc5ca2)
+![image](https://github.com/HkFromMY/techlympics-rapidinsights/assets/48499555/db6cf6b9-0b90-4777-a62c-72ca43fc5ca2)  
 By analysing the data from government website, we can see that there is an upward trend of public transport usage during the post-covid period, when the workers are coming back to the office. However, there is still a 24% drop in ridership that can be seen when comparing the pre-covid period with the post-covid period which means lesser people are adopting to the public transports. Therefore, the goal of this project is to make public transport more accessible and sustainable through the following 2 initiatives:
 1. Enhance the **efficiency of the maintenance effort** to increase ridership convenience
 2. Enhance **resource allocation** initiatives such as staff scheduling and trains frequency via ridership demand.
